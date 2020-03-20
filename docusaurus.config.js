@@ -67,7 +67,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()}. Andylidong`,
+      copyright: `Copyright © ${new Date().getFullYear()}. LD`,
     },
   },
   presets: [
