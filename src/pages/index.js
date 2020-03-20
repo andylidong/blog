@@ -17,7 +17,7 @@ const features = [
     ),
   },
   {
-    title: <>专注1</>,
+    title: <>专注</>,
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>

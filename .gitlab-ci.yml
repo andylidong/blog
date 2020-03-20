@@ -1,0 +1,65 @@
+# 定义在job执行之前的执行脚本(就一次)
+before_script:
+  - echo "hello gitlab ci"
+  - whoami
+
+stages:
+  - init
+  - deploy
+  - release
+  - test
+  - master
+
+cache:
+  paths:
+    - node_modules/
+
+# 这个是某个任务的名称，你可以随意起名
+初始化:
+  stage: init
+  cache:
+    policy: push
+    paths:
+      - node_modules/
+  script:
+    - ls -la
+    - npm config set registry "https://registry.npm.taobao.org"
+    - npm install
+  tags:
+    - react-runner
+
+构建开发环境:
+  stage: deploy
+  script:
+    - npm run deploy
+  only:
+    - develop
+  tags:
+    - react-runner
+
+构建测试环境:
+  stage: test
+  script:
+    - npm run deploy
+  only:
+    - test
+  tags:
+    - react-runner
+
+构建预发环境:
+  stage: release
+  script:
+    - npm run release
+  only:
+    - release
+  tags:
+    - react-runner
+
+构建生产环境:
+  stage: master
+  script:
+    - npm run release ${P_HOST} ${P_PORT} ${P_USERNAME} ${P_PASSWORD} ${P_CATALOG}
+  only:
+    - master
+  tags:
+    - react-runner
