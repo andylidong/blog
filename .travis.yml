@@ -1,0 +1,15 @@
+# 使用的语言
+language: node_js
+
+# 使用的nodejs版本
+node_js:
+  - v12.16.1
+
+# 执行的脚本
+script:
+  - npm run deploy ${P_HOST} ${P_PORT} ${P_USERNAME} ${P_PASSWORD} ${P_CATALOG}
+
+# 仓库的分支
+branches:
+  only:
+    - master
