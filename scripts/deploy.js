@@ -1,7 +1,7 @@
 const Config = {
   host: '', // 服务器ip地址或域名
   port: 22, // 服务器ssh连接端口号
-  username: '', // ssh登录用户
+  username: 'root', // ssh登录用户
   password: '', // 密码
   privateKey: null, // 私钥，私钥与密码二选一
   // privateKey: fs.readFileSync('myKey.key'),
@@ -217,13 +217,16 @@ function stopProgress(sshCon, fileName, notEnd) {
 // 执行前端部署
 (async () => {
   // 定义操作对象
-  const [host, port, username, password, catalog] = process.argv.splice(2);
   const config = Config;
-  config.host = host;
-  config.port = port;
-  config.username = username;
-  config.password = password;
-  config.catalog = catalog;
+  console.log("process = ", process.env.NODE_ENV === 'development');
+  if (process.env.NODE_ENV != 'development') {
+    const [host, port, username, password, catalog] = process.argv.splice(2);
+    config.host = host;
+    config.port = port;
+    config.username = username;
+    config.password = password;
+    config.catalog = catalog;
+  }
   console.log("Config = " + JSON.stringify(config));
   let sshCon = new SSH(config);
 
