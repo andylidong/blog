@@ -1,6 +1,6 @@
 module.exports = {
   title: 'LD',
-  tagline: '一个混吃等死的程序猿',
+  tagline: '寻找自我',
   url: 'http://111.229.53.186/',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
