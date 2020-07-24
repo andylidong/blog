@@ -1,6 +1,6 @@
 module.exports = {
   title: 'LD',
-  tagline: '寻找自我',
+  tagline: '和你差了十万八千里，我鞭长莫及，却又马不停蹄',
   url: 'http://111.229.53.186/',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
